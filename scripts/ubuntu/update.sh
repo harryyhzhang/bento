@@ -35,5 +35,5 @@ EOF
 
 # Upgrade all installed packages incl. kernel and kernel headers
 apt-get -y dist-upgrade;
-reboot;
-sleep 60;
+#reboot;
+#sleep 60;
