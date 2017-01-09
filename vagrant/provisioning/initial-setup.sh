@@ -6,3 +6,7 @@ export https_proxy="http://10.100.33.50:8080"
 
 sudo apt-get update
 sudo apt-get -y install default-jdk
+
+sudo addgroup hadoop
+sudo adduser --ingroup hadoop hduser --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "hduser:hduser" | sudo chpasswd
