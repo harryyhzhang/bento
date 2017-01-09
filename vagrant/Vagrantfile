@@ -6,7 +6,8 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
  
-N = 3
+
+N = 1
 Name="app"
 IP="192.168.77."
 RAM=500 #megabytes
@@ -22,8 +23,19 @@ Vagrant.configure("2") do |config|
 				vb.customize ["modifyvm", :id, "--memory", RAM]
 				vb.name = Name+"#{machine_id}" 
 			end
+			node.vm.provision "bootstrap", type: "shell" , run: "up" do |s|
+				s.inline = "echo " +Name+"#{machine_id}"+" is on"
+			end
+			
+			node.vm.provision "bootstrap", type: "shell" , run: "up" do |s|
+				s.inline = "echo hello"
+			end
+			
+			node.vm.provision "environmentSetup", type: "shell" do |s|
+				s.path = "provisioning/initial-setup.sh"
+				#s.args = "/vagrant/provisioning"
+			end
 		end
 	end
 end
-
 
