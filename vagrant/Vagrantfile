@@ -7,7 +7,7 @@
 # you're doing.
  
 
-N = 1
+N = 2
 Name="app"
 IP="192.168.77."
 RAM=500 #megabytes
@@ -30,6 +30,9 @@ Vagrant.configure("2") do |config|
 			node.vm.provision "bootstrap", type: "shell" , run: "up" do |s|
 				s.inline = "echo hello"
 			end
+			
+			node.vm.provision "file", source:"./.ssh/id_rsa.pub",destination:"~/.ssh/id_rsa.pub" 
+			node.vm.provision "file", source:"./.ssh/id_rsa",destination:"~/.ssh/id_rsa" 
 			
 			node.vm.provision "environmentSetup", type: "shell" do |s|
 				s.path = "provisioning/initial-setup.sh"
