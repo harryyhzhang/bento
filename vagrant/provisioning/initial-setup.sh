@@ -39,6 +39,7 @@ tar xvzf hadoop-2.7.1.tar.gz
 sudo mv hadoop-2.7.1 /usr/local/hadoop
 sudo chown -R hduser:hadoop /usr/local/hadoop/
 
+sudo chown -R vagrant:vagrant /home/hduser/.bashrc
 echo '
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export HADOOP_HOME=/usr/local/hadoop
@@ -51,6 +52,7 @@ export YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-D java.library.path=$HADOOP_HOME/lib"
 ' >> /home/hduser/.bashrc
+sudo chown -R hduser:hadoop /home/hduser/.bashrc
 
 #export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 #into /usr/local/hadoop/etc/hadoop/hadoop-env.sh
