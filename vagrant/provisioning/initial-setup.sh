@@ -3,9 +3,11 @@ echo "### $1"
 # although proxy was set in etc/apt/apt.conf, but for some packages which is downloaded through http, it still need to setup proxy envrionment variable
 #export http_proxy="http://10.100.33.50:8080"
 #export https_proxy="http://10.100.33.50:8080"
-
+tar xvzf hadoop-2.7.1.tar.gz hadoop-2.7.1
+sudo mv hadoop-2.7.1 /usr/local/hadoop
 sudo apt-get update
-#sudo apt-get -y install default-jdk
+sudo apt-get -y install openjdk-7-jdk
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 
 sudo addgroup hadoop
 sudo adduser --ingroup hadoop hduser --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
@@ -13,9 +15,10 @@ echo "hduser:hduser" | sudo chpasswd
 
 sudo adduser hduser sudo
 
-sudo apt-get install openssh-server -y
+#sudo apt-get install openssh-server -y
 
 #ssh-keygen -t rsa -P "" -f  .ssh/id_rsa 
+cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 sudo cp -R ./.ss* ../hduser/
 cd ../hduser/
 
@@ -29,28 +32,22 @@ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 sudo chown -R hduser:hadoop .ssh
 chmod 700 .ssh
 
-cd ~
-sudo apt-get install default-jdk
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-wget http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz
 
-tar xvzf hadoop-2.7.1.tar.gz
-
-sudo mv hadoop-2.7.1 /usr/local/hadoop
+#wget http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz
+ 
 sudo chown -R hduser:hadoop /usr/local/hadoop/
-
 sudo chown -R vagrant:vagrant /home/hduser/.bashrc
 echo '
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export HADOOP_HOME=/usr/local/hadoop
 export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
-export HADOOP_MAPRED_HOME=$HADOOP_HOME
-export HADOOP_COMMON_HOME=$HADOOP_HOME
-export HADOOP_HDFS_HOME=$HADOOP_HOME
-export YARN_HOME=$HADOOP_HOME
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export HADOOP_OPTS="-D java.library.path=$HADOOP_HOME/lib"
+#export HADOOP_MAPRED_HOME=$HADOOP_HOME
+#export HADOOP_COMMON_HOME=$HADOOP_HOME
+#export HADOOP_HDFS_HOME=$HADOOP_HOME
+#export YARN_HOME=$HADOOP_HOME
+#export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+#export HADOOP_OPTS="-D java.library.path=$HADOOP_HOME/lib"
 ' >> /home/hduser/.bashrc
 sudo chown -R hduser:hadoop /home/hduser/.bashrc
 
