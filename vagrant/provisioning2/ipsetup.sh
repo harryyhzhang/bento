@@ -1,3 +1,4 @@
+sudo sh -c 'echo "192.168.77.20	HadoopMaster" >> /etc/hosts'
 sudo sh -c 'echo "192.168.77.21	HadoopSlave1" >> /etc/hosts'
 sudo sh -c 'echo "192.168.77.22	HadoopSlave2" >> /etc/hosts'
 sudo sh -c 'echo "192.168.77.23	HadoopSlave3" >> /etc/hosts'

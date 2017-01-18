@@ -1,12 +1,15 @@
 echo "### $1"
-#sudo sh -c '(echo "Acquire::http::proxy \"http://10.100.33.50:8080/\";";  echo "Acquire::ftp::proxy \"ftp://10.100.33.50:8080/\";";  echo "Acquire::https::proxy \"https://10.100.33.50:8080/\";") >  /etc/apt/apt.conf'
+sudo sh -c '(echo "Acquire::http::proxy \"http://10.100.33.50:8080/\";";  echo "Acquire::ftp::proxy \"ftp://10.100.33.50:8080/\";";  echo "Acquire::https::proxy \"https://10.100.33.50:8080/\";") >  /etc/apt/apt.conf'
 # although proxy was set in etc/apt/apt.conf, but for some packages which is downloaded through http, it still need to setup proxy envrionment variable
-#export http_proxy="http://10.100.33.50:8080"
-#export https_proxy="http://10.100.33.50:8080"
+export http_proxy="http://10.100.33.50:8080"
+export https_proxy="http://10.100.33.50:8080"
+#echo $http_proxy "http_proxy"
+#echo $https_proxy "http_proxy"
 tar xvzf hadoop-2.7.1.tar.gz hadoop-2.7.1
 sudo mv hadoop-2.7.1 /usr/local/hadoop
-sudo apt-get update
-sudo apt-get -y install openjdk-7-jdk
+sudo apt-get update  
+sudo apt-get -y install openjdk-7-jdk  
+sudo apt-get -y install openjdk-7-jdk  #add this extra step, because it behind the company proxy, the first step will has problem of package size mismatching, which may be caused by company security policy, rerun this command again, it will continue to download to install package.
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 
 sudo addgroup hadoop

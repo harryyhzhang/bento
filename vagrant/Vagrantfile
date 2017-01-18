@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
 			node.vm.usable_port_range = (2200..2250)
 			node.vm.hostname = "HadoopMaster"
 			node.vm.network "forwarded_port", guest: 8088, host: 8088
+			node.vm.network "forwarded_port", guest: 50070, host: 50070
 			node.vm.network "private_network", ip: IP+"20", virtualbox__intnet: "intnet"
 			node.ssh.password = "vagrant"
 			node.vm.provider "virtualbox" do |vb|
