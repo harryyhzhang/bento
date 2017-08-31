@@ -70,6 +70,7 @@ scp -P 2225 -i .ssh\id_rsa config\salve\hdfs-site.xml hduser@localhost:/usr/loca
 scp -P 2225 -i .ssh\id_rsa config\salve\mapred-site.xml hduser@localhost:/usr/local/hadoop/etc/hadoop/mapred-site.xml
 scp -P 2225 -i .ssh\id_rsa config\salve\yarn-site.xml hduser@localhost:/usr/local/hadoop/etc/hadoop/yarn-site.xml
  
+<<<<<<< HEAD
  ssh -p 2222 -i .ssh\id_rsa  hduser@localhost '/usr/local/hadoop/bin/hadoop namenode -format' 
  ssh -p 2222 -i .ssh\id_rsa  hduser@localhost '/usr/local/hadoop/sbin/start-all.sh' 
  
@@ -80,4 +81,9 @@ scp -P 2225 -i .ssh\id_rsa config\salve\yarn-site.xml hduser@localhost:/usr/loca
  if not exist "out" mkdir out
  scp -P 2222 -i .ssh\id_rsa hduser@localhost:~/out/* ./out/
 
+=======
+ssh -p 2222 -i .ssh\id_rsa  hduser@localhost '/usr/local/hadoop/bin/hadoop namenode -format' 
+ssh -p 2222 -i .ssh\id_rsa  hduser@localhost '/usr/local/hadoop/sbin/start-all.sh' 
+ 
+>>>>>>> 816226fb572124e2a4dafa97d3170e4a04055a63
 
