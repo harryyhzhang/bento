@@ -27,10 +27,11 @@ cd ../hduser/
 
 chmod 600 .ssh/id_rsa
 cat .ssh/id_rsa.pub >> .ssh/authorized_keys
-
+ssh-keyscan HadoopSlave1
 
 #ssh-keyscan -H 192.168.77.21 >> .ssh/known_hosts
 #ssh-keyscan -H 192.168.77.22 >> .ssh/known_hosts
+#ssh-keyscan -H 192.168.77.23 >> .ssh/known_hosts
 
 sudo chown -R hduser:hadoop .ssh
 chmod 700 .ssh

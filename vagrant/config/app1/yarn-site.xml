@@ -24,6 +24,10 @@
 	<value>org.apache.hadoop.mapred.ShuffleHandler</value>
 </property>
 <property>
+	<name>yarn.resourcemanager.resource.tracker.address</name>
+	<value>hadoopmaster:8025</value>
+</property>
+<property>
 	<name>yarn.resourcemanager.scheduler.address</name>
 	<value>HadoopMaster:8030</value>
 </property>
