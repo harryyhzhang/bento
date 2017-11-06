@@ -1,7 +1,7 @@
 REM  if not exist "lib" mkdir lib
 REM .\bin\wget.exe http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz -O lib\hadoop-2.7.1.tar.gz
 
- vagrant.exe up 
+ REM vagrant.exe up 
  REM vagrant reload --provision
 
 scp -P 2222 -o StrictHostKeyChecking=no -i .ssh\id_rsa provisioning2\ipsetup.sh vagrant@127.0.0.1:~/ipsetup.sh   

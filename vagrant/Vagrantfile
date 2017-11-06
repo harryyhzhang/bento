@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
 			node.vm.network "forwarded_port", guest: 50070, host: 50070
 			#node.vm.network "forwarded_port", guest: 22, host: 2222
 			node.vm.network "private_network", ip: IP+"20", virtualbox__intnet: "intnet"
+			node.ssh.username = "vagrant"
 			node.ssh.password = "vagrant"
 			node.vm.provider "virtualbox" do |vb|
 				vb.customize ["modifyvm", :id, "--memory", RAM]
@@ -48,6 +49,7 @@ Vagrant.configure("2") do |config|
 			node.vm.hostname = Name+"#{machine_id}"
 			node.vm.network "forwarded_port", guest: 22, host: "#{2222+machine_id}"
 			node.vm.network "private_network", ip: IP+"#{20+machine_id}", virtualbox__intnet: "intnet"
+			node.ssh.username = "vagrant" 
 			node.ssh.password = "vagrant"
 			node.vm.provider "virtualbox" do |vb|
 				vb.customize ["modifyvm", :id, "--memory", RAM]
